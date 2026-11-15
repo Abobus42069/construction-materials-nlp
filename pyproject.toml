@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "construction-materials-nlp"
+version = "0.1.0"
+description = "Evidence-backed Russian materials information extraction baseline"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.scripts]
+materials-nlp = "materials_nlp.cli:main"
+
+[tool.setuptools]
+packages = ["materials_nlp"]
