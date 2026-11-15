@@ -121,6 +121,13 @@ class PipelineTests(unittest.TestCase):
             with self.assertRaises(ValueError):process(source,Path(directory)/'out.jsonl')
             with self.assertRaises(ValueError):process(source,source)
 
+    def test_public_demo_has_no_parser_repository_dependency(self):
+        demo=Path(__file__).resolve().parents[1]/'data/demo_input.jsonl'
+        with tempfile.TemporaryDirectory() as directory:
+            report=process(demo,Path(directory)/'demo.jsonl')
+            self.assertEqual(report['counts']['input_records'],10)
+            self.assertEqual(report['counts']['annotations'],8)
+
     def test_smoke_dataset(self):
         self.assertEqual(evaluate(Path(__file__).resolve().parents[1]/'data/smoke_gold.jsonl')['failures'],[])
 
